@@ -103,10 +103,11 @@ a_term : a_term T_MUL a_fact
     ;
 
 a_fact : 
-    | 
-    | 
-    | 
-    | 
+    |           //variable reference (non-terminal varref).
+    |           //The token T NUM
+    |           //A literal string (token T LITERAL STR).
+    |            //The non-terminal a fact preceded by the T SUB token (Note: Do not use ’-’).
+    |           //A parenthesized arithmetic expression.
     ;
 
 varref : 

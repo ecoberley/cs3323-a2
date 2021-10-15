@@ -102,11 +102,11 @@ a_term : a_term T_MUL a_fact
     | a_fact
     ;
 
-a_fact : varref T_OR T_NUM T_OR T_LITERAL_STR T_OR (a_fact T_AND T_SUB) T_OR '(' a_expr ')'
+a_fact : '(' a_expr ')'
     |  varref        
     |  T_NUM         
     |  T_LITERAL_STR         
-    |  T_SUB       
+    |  T_SUB a_fact  
     ;
 
 varref : varref '[' a_expr ']'

@@ -71,7 +71,7 @@ stmt : assignment
 block : T_BEGIN stmt_list T_END
   ;
 
-foreach : T_FOREACH varref T_IN '(' ':' ')' stmt
+foreach : T_FOREACH varref T_IN '(' a_expr ':' a_expr ')' stmt
     ;
 
 while : T_WHILE l_expr stmt 

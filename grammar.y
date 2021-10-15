@@ -109,7 +109,7 @@ a_fact : varref T_OR T_NUM T_OR T_LITERAL_STR T_OR (a_fact T_AND T_SUB) T_OR '('
     |  T_SUB       
     ;
 
-varref : T_ID T_OR '[' ':' ']'
+varref : varref '[' a_expr ']'
   | T_ID
   ;
 

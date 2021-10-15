@@ -102,16 +102,15 @@ a_term : a_term T_MUL a_fact
     | a_fact
     ;
 
-a_fact : 
-    |           //variable reference (non-terminal varref).
-    |           //The token T NUM
-    |           //A literal string (token T LITERAL STR).
-    |            //The non-terminal a fact preceded by the T SUB token (Note: Do not use ’-’).
-    |           //A parenthesized arithmetic expression.
+a_fact : varref T_OR T_NUM T_OR T_LITERAL_STR T_OR (a_fact T_AND T_SUB) T_OR '(' a_expr ')'
+    |  varref        
+    |  T_NUM         
+    |  T_LITERAL_STR         
+    |  T_SUB       
     ;
 
-varref : 
-  | 
+varref : T_ID T_OR '[' ':' ']'
+  | T_ID
   ;
 
 l_expr : l_expr T_AND l_term
@@ -141,12 +140,12 @@ read : T_READ varlist ;
 
 write: T_WRITE expr_list;
 
-varlist : 
-      | 
+varlist : varref ',' varref
+      | varref
       ;
 
-expr_list : 
-  | 
+expr_list : a_expr ',' a_expr
+  | a_expr
   ;
 
 %%
